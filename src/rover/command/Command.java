@@ -12,7 +12,7 @@
 package rover.command;
 
 /**
- * super Klasse aller Kommandos
+ * super Klasse für aller Kommandos
  */
 public abstract class Command implements ICommand{
 	private String name;

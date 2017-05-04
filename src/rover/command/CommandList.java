@@ -13,7 +13,7 @@ public class CommandList {
 	private Element last = null;
 	
 	/**
-	 * @param args
+	 * @param args Element hinten anhaengen
 	 */
 	public boolean add(Command command){
 		if(this.last == null){

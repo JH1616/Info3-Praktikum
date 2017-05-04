@@ -1,7 +1,7 @@
 package rover.command;
 
 /**
- * beschreibt ein Kommando-Objekt welches später die Strecke und Geschwindigkeit speichert
+ * beschreibt ein Kommando-Objekt welches spaeter die Strecke und Geschwindigkeit speichert
  */
 public class Gear extends Command implements IGear{
 	private int speed;
@@ -38,7 +38,7 @@ public class Gear extends Command implements IGear{
 
 	@Override
 	/**
-	 * damit die funktion toString sinnvolles Zeug enthält
+	 * damit die funktion toString sinnvolles Zeug enthaelt
 	 */
 	public String toString() {
 		return "Gear [speed=" + this.speed + ", duration=" + this.duration + "]";

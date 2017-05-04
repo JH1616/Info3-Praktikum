@@ -1,7 +1,7 @@
 package rover.command;
 
 /**
- * beschreibt ein Kommando-Objekt welches später die Richtungsänderung speichert
+ * beschreibt ein Kommando-Objekt welches spaeter die Richtungsaenderung speichert
  */
 public class Direction extends Command implements IDirection{
 	private int degree; //gradmaß
@@ -22,7 +22,7 @@ public class Direction extends Command implements IDirection{
 	
 	@Override
 	/**
-	 * damit die funktion toString sinnvolles Zeug enthält
+	 * damit die Funktion toString sinnvolles Zeug enthaelt
 	 */
 	public String toString() {
 		return "Direction [degree=" + this.degree + "]";

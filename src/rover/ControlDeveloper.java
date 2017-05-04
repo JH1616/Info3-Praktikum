@@ -12,7 +12,7 @@
 package rover;
 
 /**
- * Beispiel zum zeigen des unterschied zwischen Klasssen und Objekt -variablen
+ * Beispiel zum Zeigen des Unterschieds zwischen Klasssen und Objekt -variablen
  */
 public class ControlDeveloper {
 	static String className = "Control-Developer"; //Klassenvariable
@@ -20,7 +20,7 @@ public class ControlDeveloper {
 	
 	
 	/**
-	 * gibt den Namen der KlassenVariable zurück
+	 * gibt den Namen der KlassenVariable zurueck
 	 */
 	public static String getName2() {
 		return className;
@@ -36,7 +36,7 @@ public class ControlDeveloper {
 
 	
 	/**
-	 * gibt den Namen der Objektvariablen zurück
+	 * gibt den Namen der Objektvariablen zurueck
 	 */
 	public String getName() {
 		return name;

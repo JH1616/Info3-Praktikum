@@ -1,7 +1,7 @@
 package rover.command;
 
 /**
- * beschreibt ein Kommando-Objekt welches später den Rover warten läst speichert
+ * beschreibt ein Kommando-Objekt welches spaeter den Rover warten laesst speichert
  */
 public class Pause extends Command implements IPause{
 	private double duration;
@@ -22,7 +22,7 @@ public class Pause extends Command implements IPause{
 
 	@Override
 	/**
-	 * damit die funktion toString sinnvolles Zeug enthält
+	 * damit die funktion toString sinnvolles Zeug enthaelt
 	 */
 	public String toString() {
 		return "Pause [duration=" + duration + "]";

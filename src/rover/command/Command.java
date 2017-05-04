@@ -5,14 +5,14 @@
 * Bemerkungen:
 *    keine
 *
-* @author Lydia Eicher & Jörn Hoffarth
+* @author Lydia Eicher & Joern Hoffarth
 * @version 1.0
 */
 
 package rover.command;
 
 /**
- * super Klasse für aller Kommandos
+ * super Klasse fuer aller Kommandos
  */
 public abstract class Command implements ICommand{
 	private String name;

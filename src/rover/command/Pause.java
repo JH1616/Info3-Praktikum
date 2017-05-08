@@ -1,24 +1,40 @@
+/**
+* Aufgabenblatt 1
+* Aufgabe 3
+* Bearbeitungsdauer:  min
+* Bemerkungen:
+*    keine
+*
+* @author Lydia Eicher & Joern Hoffarth
+* @version 1.0
+*/
 package rover.command;
 
 /**
- * beschreibt ein Kommando-Objekt welches spaeter den Rover warten laesst speichert
+ * beschreibt ein Kommando-Objekt welches spaeter den Rover warten laesst
  */
 public class Pause extends Command implements IPause{
 	private double duration;
 
+	
+
 	/**
-	 * Bis jetzt Sinnlos...
+	 * @return the duration
 	 */
 	public double getDuration() {
 		return duration;
 	}
 
+
+
 	/**
-	 * Bis jetzt Sinnlos...
+	 * @param duration the duration to set
 	 */
 	public void setDuration(double duration) {
 		this.duration = duration;
 	}
+
+
 
 	@Override
 	/**

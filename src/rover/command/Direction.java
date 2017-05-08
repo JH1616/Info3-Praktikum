@@ -1,3 +1,13 @@
+/**
+* Aufgabenblatt 1
+* Aufgabe 2
+* Bearbeitungsdauer:  min
+* Bemerkungen:
+*    keine
+*
+* @author Lydia Eicher & Joern Hoffarth
+* @version 1.0
+*/
 package rover.command;
 
 /**
@@ -5,21 +15,24 @@ package rover.command;
  */
 public class Direction extends Command implements IDirection{
 	private int degree; //gradmaß
-
+	
 	/**
-	 * getter in gradmaß
+	 * @return the degree
 	 */
 	public int getDegree() {
-		return this.degree;
+		return degree;
 	}
 
+
+
 	/**
-	 * setter in gradmaß
+	 * @param degree the degree to set
 	 */
 	public void setDegree(int degree) {
 		this.degree = degree;
-	}	
-	
+	}
+
+
 	@Override
 	/**
 	 * damit die Funktion toString sinnvolles Zeug enthaelt

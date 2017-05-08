@@ -1,7 +1,7 @@
 /**
 * Aufgabenblatt 1
 * Aufgabe 2
-* Bearbeitungsdauer: 60 min
+* Bearbeitungsdauer: min
 * Bemerkungen:
 *    keine
 *
@@ -18,11 +18,20 @@ public abstract class Command implements ICommand{
 	private String name;
 
 	/**
-	 * getter...
+	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
 	
 
 }

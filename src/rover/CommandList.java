@@ -1,10 +1,22 @@
 /**
- * 
- */
-package rover.command;
+* Aufgabenblatt 1
+* Aufgabe 4
+* Bearbeitungsdauer:  min
+* Bemerkungen:
+*    keine
+*
+* @author Lydia Eicher & Joern Hoffarth
+* @version 1.0
+*/
+package rover;
+
+import rover.command.Command;
+import rover.command.Gear;
+import rover.command.Pause;
+import rover.command.Repetition;
 
 /**
- * @author jorn
+ * Erstellt eine Liste aus Kommandos
  *
  */
 public class CommandList {
@@ -13,7 +25,7 @@ public class CommandList {
 	private Element last = null;
 	
 	/**
-	 * @param args Element hinten anhaengen
+	 * haengt ein Kommandoobjekt an die liste hinten an
 	 */
 	public boolean add(Command command){
 		if(this.last == null){
@@ -29,11 +41,13 @@ public class CommandList {
 	
 	
 	/**
-	 * @param args
+	 * loescht das n.-Kommando
 	 */
 	public boolean remove(int position){
-		Element jumper = this.root;
+		if (position < 0) return false;
 		
+		Element jumper = this.root;
+
 		for(int i = 0; i<position && jumper!=null; jumper = jumper.getNext()) i++;
 		
 		if (jumper == null) return false;
@@ -64,7 +78,7 @@ public class CommandList {
 	
 	
 	/**
-	 * @param args
+	 * gibt das n.-Kommando zurueck
 	 */
 	public Command get(int position){
 		Element jumper = this.root;
@@ -79,7 +93,7 @@ public class CommandList {
 	
 	
 	/**
-	 * @param args
+	 * verschiebt das n.-Kommando eine Stelle nach hinten
 	 */
 	public boolean moveDown(int position){
 		Element jumper = this.root;
@@ -110,7 +124,7 @@ public class CommandList {
 	
 
 	/**
-	 * @param args
+	 * verschiebt das n.-Kommando eine Stelle nach vorne
 	 */
 	public boolean moveUp(int position){
 		Element jumper = this.root;
@@ -142,13 +156,16 @@ public class CommandList {
 	
 	
 		
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * gibt alle Kommandos zurueck. Fuer leere liste CommandList is emty.
 	 */
 	@Override
 	public String toString() {
 		try{
-		return "CommandList [root=" + root.getCommand().toString() + ", last=" + last.getCommand().toString() + "]";
+			for(int i=0; this.get(i) != null; i++){
+				System.out.println(this.get(i).toString());
+			}
+			return "CommandList [root=" + root.getCommand().toString() + ", last=" + last.getCommand().toString() + "]";
 		}
 		catch (NullPointerException e){
 			return "CommandList is emty!";
@@ -157,7 +174,7 @@ public class CommandList {
 
 
 	/**
-	 * @param args
+	 * test Funktion fuer die eigene Klasse
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -166,38 +183,25 @@ public class CommandList {
 		test.add(new Gear());
 		test.add(new Repetition());
 		test.add(new Pause());
-		
 		System.out.println("Runde 1:");
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		
 		System.out.println("Runde 2:");
 		test.remove(2);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		
 		System.out.println("Runde 3:");
 		test.remove(1);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		
 		System.out.println("Runde 4:");
 		test.remove(0);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
@@ -206,73 +210,46 @@ public class CommandList {
 		test.add(new Gear());
 		test.add(new Repetition());
 		test.add(new Pause());
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		System.out.println("Runde 6:");
 		test.moveUp(3);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		System.out.println("Runde 7:");
 		test.moveUp(2);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		System.out.println("Runde 8:");
 		test.moveUp(1);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		System.out.println("Runde 9:");
 		test.moveUp(0);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		System.out.println("Runde 10:");
 		test.moveDown(0);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		System.out.println("Runde 11:");
 		test.moveDown(1);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		System.out.println("Runde 12:");
 		test.moveDown(2);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		
 		System.out.println("Runde 13:");
 		test.moveDown(3);
-		for(int i=0; test.get(i) != null; i++){
-			System.out.println(test.get(i).toString());
-		}
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 	}
@@ -287,7 +264,6 @@ class Element {
 	
 	
 	public Element(Element next, Element prev, Command command) {
-		//super();
 		this.next = next;
 		this.prev = prev;
 		this.command = command;
@@ -297,65 +273,26 @@ class Element {
 		}
 	}
 
-
-	
-	
-	
-	/**
-	 * @return the next
-	 */
 	public Element getNext() {
 		return next;
 	}
 
-
-
-
-
-	/**
-	 * @param next the next to set
-	 */
 	public void setNext(Element next) {
 		this.next = next;
 	}
 
-
-
-
-
-	/**
-	 * @return the prev
-	 */
 	public Element getPrev() {
 		return prev;
 	}
 
-
-
-
-
-	/**
-	 * @param prev the prev to set
-	 */
 	public void setPrev(Element prev) {
 		this.prev = prev;
 	}
 
-
-
-
-
-	/**
-	 * @return the element
-	 */
 	public Command getCommand() {
 		return this.command;
 	}
 
-
-	/**
-	 * @param element the element to set
-	 */
 	public void setCommand(Command element) {
 		this.command = element;
 	}

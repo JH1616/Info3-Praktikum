@@ -1,39 +1,30 @@
 /**
 * Aufgabenblatt 1
-* Aufgabe 1
-* Bearbeitungsdauer: 10 min
+* Aufgabe 3
+* Bearbeitungsdauer:  min
 * Bemerkungen:
 *    keine
 *
-* @author Lydia Eicher & Jörn Hoffarth
+* @author Lydia Eicher & Joern Hoffarth
 * @version 1.0
 */
 
 package rover;
 
+import rover.command.Command;
+import rover.command.Direction;
+import rover.command.Gear;
+import rover.command.Pause;
+import rover.command.Repetition;
+
 /**
- * Beispiel zum Zeigen des Unterschieds zwischen Klasssen und Objekt -variablen
+ *erzeugt ein Array bestehend aus allen Kommandos
  */
 public class ControlDeveloper {
-	static String className = "Control-Developer"; //Klassenvariable
+	
+	private Command [] commands;
 	String name = "Control-Developer"; //Objektvariable
 	
-	
-	/**
-	 * gibt den Namen der KlassenVariable zurueck
-	 */
-	public static String getName2() {
-		return className;
-	}
-
-	
-	/**
-	 * setzt den Namen der KlassenVariable
-	 */
-	public static void setName2(String className) {
-		ControlDeveloper.className = className;
-	}
-
 	
 	/**
 	 * gibt den Namen der Objektvariablen zurueck
@@ -47,29 +38,46 @@ public class ControlDeveloper {
 	 * setzt den Namen der Objektvariablen
 	 */
 	public void setName(String name) {
-		//automatisch erzeugter setter
 		this.name = name;
 	}
 	
+	/**
+	 * Konstruktor erzeugt 4stelliges Kommandoarray
+	 */
+	public ControlDeveloper(){
+		commands=new Command[4];
+	}
 	
 	/**
-	 * test main methode der Klasse ControlDeveloper
+	 * Erzeugen von Command-Objekten im Array commands
 	 */
-	public static void main(String[] args) {
-		
-		//direkte ausgabe von Klassenvariablen
-		System.out.println(ControlDeveloper.className);
-		//indirekte ausgabe von Klassenvariablen
-		System.out.println(ControlDeveloper.getName2());
-		
-		//erzeugen eines testobjekts
-		ControlDeveloper test = new ControlDeveloper();
-		//direkte ausgabe von Objektvariablen
-		System.out.println(test.name);
-		//indirekte ausgabe von Objektvariablen
-		System.out.println(test.getName());
-		
-	
+	public void testCommands(){
+		commands[0]= new Direction();
+		commands[1]= new Gear();
+		commands[2]= new Repetition();
+		commands[3]= new Pause();
 	}
+
+	/**
+	 * Ausgeben der Kommandos
+	 */
+	public void printCommands(){
+		for (Command i : commands){
+			if (i!=null){
+				System.out.println(i.toString());
+			}
+		}
+	}
+	
+	/**
+	 * Testfunktion
+	 */
+	public static void main(String[] args){
+		ControlDeveloper test = new ControlDeveloper();
+		test.printCommands();
+		test.testCommands();
+		test.printCommands();
+	}
+	
 
 }

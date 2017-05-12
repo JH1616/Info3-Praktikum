@@ -18,7 +18,7 @@ public class ControlDeveloperAufg1 {
 	static String className = "Control-Developer"; //Klassenvariable
 	String name = "Control-Developer"; //Objektvariable
 	
-	
+	 
 	/**
 	 * gibt den Namen der KlassenVariable zurueck
 	 */

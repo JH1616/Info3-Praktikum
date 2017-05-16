@@ -16,6 +16,15 @@ package rover.command;
 public class Direction extends Command implements IDirection{
 	private int degree; //gradmaß
 	
+	
+	
+	public Direction() {
+		super();
+		setName("Direction");
+	}
+
+
+
 	/**
 	 * @return the degree
 	 */

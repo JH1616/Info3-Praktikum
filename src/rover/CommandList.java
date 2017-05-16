@@ -195,7 +195,7 @@ public class CommandList {
 		
 		
 		System.out.println("Runde 3:");
-		test.remove(1);
+		test.remove(7);
 		System.out.println(test);
 		System.out.println("--------------------------------------------------------------------------");
 		

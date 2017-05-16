@@ -55,21 +55,6 @@ public class Repetition extends Command implements IRepetition{
 		return "Repetition [nrSteps=" + this.nrSteps + ", nrRepetitions=" + this.nrRepetitions + "]";
 	}
 
-	/**
-	 * Bis jetzt Sinnlos...
-	 */
-	public int getJumpAdress() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/**
-	 * Bis jetzt Sinnlos...
-	 */
-	public int getNrRepetition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	
 }

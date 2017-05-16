@@ -10,7 +10,7 @@
 */package rover.command;
 
 public interface IRepetition {
-	public int getJumpAdress();
-	public int getNrRepetition();
+	public int getNrSteps();
+	public int getNrRepetitions();
 
 }

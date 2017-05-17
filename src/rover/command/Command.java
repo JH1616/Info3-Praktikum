@@ -10,6 +10,7 @@
 */
 
 package rover.command;
+import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 /**
  * super Klasse fuer aller Kommandos

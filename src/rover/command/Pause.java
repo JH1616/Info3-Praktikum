@@ -9,7 +9,7 @@
 * @version 1.0
 */
 package rover.command;
-
+import hsrt.mec.controldeveloper.core.com.command.IPause;
 /**
  * beschreibt ein Kommando-Objekt welches spaeter den Rover warten laesst
  */

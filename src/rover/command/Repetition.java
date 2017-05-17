@@ -9,6 +9,7 @@
 * @version 1.0
 */
 package rover.command;
+import hsrt.mec.controldeveloper.core.com.command.IRepetition;
 
 /**
  * noch nicht ganz klar wofuer die Klasse gut ist

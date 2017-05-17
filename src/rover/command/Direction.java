@@ -9,6 +9,7 @@
 * @version 1.0
 */
 package rover.command;
+import hsrt.mec.controldeveloper.core.com.command.IDirection;
 
 /**
  * beschreibt ein Kommando-Objekt welches spaeter die Richtungsaenderung speichert

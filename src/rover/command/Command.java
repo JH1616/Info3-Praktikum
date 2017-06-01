@@ -17,6 +17,14 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
  */
 public abstract class Command implements ICommand{
 	private String name;
+	
+
+	/**
+	 * @param name
+	 */
+	public Command(String name) {
+		this.name = name;
+	}
 
 	/**
 	 * @return the name

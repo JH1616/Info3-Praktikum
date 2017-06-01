@@ -22,8 +22,7 @@ public class Pause extends Command implements IPause{
 	 * Konstruktor
 	 */
 	public Pause() {
-		super();
-		setName("Pause");
+		super("Pause");
 	}
 
 
@@ -33,8 +32,7 @@ public class Pause extends Command implements IPause{
 	 * @param duration
 	 */
 	public Pause(double duration) {
-		super();
-		setName("Pause");
+		super("Pause");
 		this.duration = duration;
 	}
 

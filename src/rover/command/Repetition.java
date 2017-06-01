@@ -24,8 +24,7 @@ public class Repetition extends Command implements IRepetition{
 	 * Konstruktor
 	 */
 	public Repetition() {
-		super();
-		setName("Repetition");
+		super("Repetition");
 	}
 	
 	
@@ -35,8 +34,7 @@ public class Repetition extends Command implements IRepetition{
 	 * @param nrRepetitions
 	 */
 	public Repetition(int nrSteps, int nrRepetitions) {
-		super();
-		setName("Repetition");
+		super("Repetition");
 		this.nrSteps = nrSteps;
 		this.nrRepetitions = nrRepetitions;
 	}

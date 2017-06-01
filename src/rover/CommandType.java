@@ -17,7 +17,7 @@ import rover.command.Pause;
 import rover.command.Repetition;
 
 /**
- * @author Lydia
+ * 
  *
  */
 public class CommandType {
@@ -46,9 +46,9 @@ public class CommandType {
 		this.name = name;
 	}
 	
-	
 	/**
-	 * 
+	 * erstellt Command (je nach Name)
+	 * @return the command
 	 */
 	public Command createInstance(){
 		if (name == "Direction")
@@ -61,5 +61,6 @@ public class CommandType {
 			return new Pause();
 		return null;
 	}
+
 
 }

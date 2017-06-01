@@ -24,8 +24,7 @@ public class Gear extends Command implements IGear{
 	 * default Konstruktor
 	 */
 	public Gear() {
-		super();
-		setName("Gear");
+		super("Gear");
 	}
 
 
@@ -34,8 +33,7 @@ public class Gear extends Command implements IGear{
 	 * @param duration
 	 */
 	public Gear(int speed, double duration) {
-		super();
-		setName("Gear");
+		super("Gear");
 		this.speed = speed;
 		this.duration = duration;
 	}

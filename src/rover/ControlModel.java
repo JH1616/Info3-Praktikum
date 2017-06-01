@@ -25,7 +25,7 @@ import rover.command.Repetition;
 
 /**
  * 
- *
+ * Zentralverwaltung der Commands
  */
 public class ControlModel {
 	
@@ -46,7 +46,7 @@ public class ControlModel {
 	
 	/**
 	 * 
-	 * @return
+	 * @return the instance
 	 */
 	public static ControlModel getInstance(){
 		if (instance==null)
@@ -55,7 +55,7 @@ public class ControlModel {
 	}
 	
 	/**
-	 * 
+	 * befuellt das Array CommandTypes
 	 */
 	public void createCommandTypes(){
 		commandTypes[0] = new CommandType("Direction");
@@ -65,7 +65,7 @@ public class ControlModel {
 	}
 	
 	/**
-	 * 
+	 * auslesen der Commads aus dem File f und speichern in der verketteten Liste
 	 * @param f
 	 * @return
 	 */
@@ -107,13 +107,13 @@ public class ControlModel {
 	}
 	
 	/**
-	 * 
+	 * speichern der Commands in der verketteten Liste im File f
 	 * @param f
 	 * @return
 	 */
 	public boolean save (File f){
 		
-	    this.io_obj = new TextFile(f, true);
+	    this.io_obj = new TextFile(f, false);		// false -> ueberschreiben
 		
 		Vector<String> data = new Vector<String>();
 		
@@ -130,12 +130,13 @@ public class ControlModel {
 	 * @param c
 	 */
 	public void commandPerformed(Command c){
-		//bisher leer
+		System.out.println(c.toString());
+		//damit die Methode irgendwas macht
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Zugriff auf verkettete Liste
+	 * @return the controlProcess
 	 */
 	public CommandList getControlProcess(){
 		return controlProcess;

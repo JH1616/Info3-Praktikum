@@ -5,7 +5,7 @@
 * Bemerkungen:
 *    keine
 *
-* @author Lydia Eicher & Jörn Hoffarth
+* @author Lydia Eicher & Joern Hoffarth
 * @version 1.0
 */
 

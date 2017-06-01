@@ -20,8 +20,7 @@ public class Direction extends Command implements IDirection{
 	
 	
 	public Direction() {
-		super();
-		setName("Direction");
+		super("Direction");
 	}
 
 
@@ -31,8 +30,7 @@ public class Direction extends Command implements IDirection{
 	 * @param degree
 	 */
 	public Direction(int degree) {
-		super();
-		setName("Direction");
+		super("Direction");
 		this.degree = degree;
 	}
 

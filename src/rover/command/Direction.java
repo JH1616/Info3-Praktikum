@@ -25,6 +25,19 @@ public class Direction extends Command implements IDirection{
 	}
 
 
+	
+
+	/**
+	 * @param degree
+	 */
+	public Direction(int degree) {
+		super();
+		setName("Direction");
+		this.degree = degree;
+	}
+
+
+
 
 	/**
 	 * @return the degree

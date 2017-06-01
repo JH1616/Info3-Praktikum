@@ -17,7 +17,29 @@ import hsrt.mec.controldeveloper.core.com.command.IGear;
 public class Gear extends Command implements IGear{
 	private int speed;
 	private double duration;
+		
 	
+
+	/**
+	 * default Konstruktor
+	 */
+	public Gear() {
+		super();
+		setName("Gear");
+	}
+
+
+	/**
+	 * @param speed
+	 * @param duration
+	 */
+	public Gear(int speed, double duration) {
+		super();
+		setName("Gear");
+		this.speed = speed;
+		this.duration = duration;
+	}
+
 
 
 

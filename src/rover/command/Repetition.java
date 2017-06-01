@@ -21,6 +21,29 @@ public class Repetition extends Command implements IRepetition{
 	
 	
 	/**
+	 * Konstruktor
+	 */
+	public Repetition() {
+		super();
+		setName("Repetition");
+	}
+	
+	
+
+	/**
+	 * @param nrSteps
+	 * @param nrRepetitions
+	 */
+	public Repetition(int nrSteps, int nrRepetitions) {
+		super();
+		setName("Repetition");
+		this.nrSteps = nrSteps;
+		this.nrRepetitions = nrRepetitions;
+	}
+
+
+
+	/**
 	 * @return the nrSteps
 	 */
 	public int getNrSteps() {

@@ -11,6 +11,8 @@
 
 package rover;
 
+import java.io.File;
+
 import rover.command.Command;
 import rover.command.Direction;
 import rover.command.Gear;
@@ -73,10 +75,24 @@ public class ControlDeveloper {
 	 * Testfunktion
 	 */
 	public static void main(String[] args){
-		ControlDeveloper test = new ControlDeveloper();
-		test.printCommands();
-		test.testCommands();
-		test.printCommands();
+		//ControlDeveloper test = new ControlDeveloper();
+		//test.printCommands();
+		//test.testCommands();
+		//test.printCommands();
+		
+		ControlModel testCM = ControlModel.getInstance();		
+		CommandList testCL = testCM.getControlProcess();
+		testCL.add(new Repetition());
+		testCL.add(new Repetition());
+		testCL.add(new Gear());
+		File f = new File("test.txt");
+		testCM.save(f);
+		
+		testCM.load(f);
+		
+		for(int i = 0;  null != testCL.get(i); i+=1)
+			System.out.println(testCL.get(i).toString());
+		
 	}
 	
 

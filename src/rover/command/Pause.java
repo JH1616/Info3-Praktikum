@@ -19,6 +19,30 @@ public class Pause extends Command implements IPause{
 	
 
 	/**
+	 * Konstruktor
+	 */
+	public Pause() {
+		super();
+		setName("Pause");
+	}
+
+
+	
+
+	/**
+	 * @param duration
+	 */
+	public Pause(double duration) {
+		super();
+		setName("Pause");
+		this.duration = duration;
+	}
+
+
+
+	
+
+	/**
 	 * @return the duration
 	 */
 	public double getDuration() {

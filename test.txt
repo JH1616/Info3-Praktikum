@@ -1,0 +1,3 @@
+Repetition [nrSteps=0, nrRepetitions=0]
+Repetition [nrSteps=0, nrRepetitions=0]
+Gear [speed=0, duration=0.0]

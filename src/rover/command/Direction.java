@@ -59,7 +59,7 @@ public class Direction extends Command implements IDirection{
 	 * damit die Funktion toString sinnvolles Zeug enthaelt
 	 */
 	public String toString() {
-		return "Direction [degree=" + this.degree + "]";
+		return super.getName() + " [degree=" + this.degree + "]";
 	}
 
 }

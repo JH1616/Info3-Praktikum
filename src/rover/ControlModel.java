@@ -67,7 +67,7 @@ public class ControlModel {
 	/**
 	 * auslesen der Commads aus dem File f und speichern in der verketteten Liste
 	 * @param f
-	 * @return
+	 * @return true wenn erfolgreich, 
 	 */
 	public boolean load(File f){
 	    

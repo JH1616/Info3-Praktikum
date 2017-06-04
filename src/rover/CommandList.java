@@ -39,6 +39,20 @@ public class CommandList {
 		return true;
 	}
 	
+	/**
+	 * 
+	 */
+	public int getLength(){
+		int l;
+		
+		Element jumper = this.root;
+		for(l = 0; jumper!=null; jumper = jumper.getNext()){
+			l++;
+		}
+		
+		return l;
+	}
+	
 	
 	/**
 	 * loescht das n.-Kommando
@@ -185,12 +199,14 @@ public class CommandList {
 		test.add(new Pause());
 		System.out.println("Runde 1:");
 		System.out.println(test);
+		System.out.println("Length: " + test.getLength());
 		System.out.println("--------------------------------------------------------------------------");
 		
 		
 		System.out.println("Runde 2:");
 		test.remove(2);
 		System.out.println(test);
+		System.out.println("Length: " + test.getLength());
 		System.out.println("--------------------------------------------------------------------------");
 		
 		

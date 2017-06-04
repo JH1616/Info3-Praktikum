@@ -13,6 +13,8 @@ package rover;
 
 import java.io.File;
 
+import GUI.Configuration;
+import GUI.RoverView;
 import rover.command.Command;
 import rover.command.Direction;
 import rover.command.Gear;
@@ -80,11 +82,12 @@ public class ControlDeveloper {
 		//test.testCommands();
 		//test.printCommands();
 		
-		ControlModel testCM = ControlModel.getInstance();		
+		/*ControlModel testCM = ControlModel.getInstance();		
 		CommandList testCL = testCM.getControlProcess();
 		testCL.add(new Repetition());
 		testCL.add(new Repetition());
 		testCL.add(new Gear());
+		testCM.createCommandTypes();
 		File f = new File("test.txt");
 		testCM.save(f);
 		
@@ -92,6 +95,34 @@ public class ControlDeveloper {
 		
 		for(int i = 0;  null != testCL.get(i); i+=1)
 			System.out.println(testCL.get(i).toString());
+			*/
+		
+		//CommandType [] types = {new CommandType("Gear"), new CommandType("Direction"), new CommandType("Pause")};
+	    // später Liste aus ControlModel
+		ControlModel testCM = ControlModel.getInstance();
+		CommandList testCL = testCM.getControlProcess();
+		testCM.createCommandTypes();
+		
+		//Methode in ControlModel für Zugriff auf Array ergänzt
+		//oder hat man anders darauf Zugriff?
+		CommandType[] testCT = testCM.getCommandTypes();
+		
+		testCL.add(new Gear());
+		testCL.add(new Direction());
+		testCL.add(new Pause(4));
+		testCL.add(new Gear(3,8));
+		testCL.add(new Gear(5,2));
+		
+		RoverView window = new RoverView(testCT, testCL);
+	    Configuration window1 = new Configuration(new Gear());
+	    Configuration window2 = new Configuration(new Pause());
+	    Configuration window3 = new Configuration(new Direction());
+	    Configuration window4 = new Configuration(new Repetition());
+		window.setVisible(true);
+		//window1.setVisible(true);
+		//window2.setVisible(true);
+		//window3.setVisible(true);
+		//window4.setVisible(true);
 		
 	}
 	

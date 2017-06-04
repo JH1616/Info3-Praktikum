@@ -83,11 +83,7 @@ public class ControlModel {
 			zeile1 = zeile.split(" ");
 			String name = zeile1[0];
 			
-			for(int i = 1; i < zeile1.length; i+=1){
-				zeile1[i] = (zeile1[i].split("="))[1];
-				zeile1[i] = zeile1[i].replaceAll(",", "");
-				zeile1[i] = zeile1[i].replaceAll("]", "");
-			}
+			 
 			
 			if(name.equals("Gear")){
 				controlProcess.add(new Gear(Integer.parseInt(zeile1[1]), Double.parseDouble(zeile1[2])));
@@ -141,5 +137,14 @@ public class ControlModel {
 	public CommandList getControlProcess(){
 		return controlProcess;
 	}
+
+	/**
+	 * @return the commandTypes
+	 */
+	public CommandType[] getCommandTypes() {
+		return commandTypes;
+	}
+	
+	
 	
 }

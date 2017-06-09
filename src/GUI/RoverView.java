@@ -81,12 +81,22 @@ public class RoverView extends JFrame{
 	    pane.add(table2, c);
 	    
 	    
+	    
 	    button = new JButton("Long-Named Button 6");
 	    c.gridwidth = 2;
 	    c.weightx = 0.0;
 	    c.gridx = 0;
-	    c.gridy = 2;
+	    c.gridy = 3;
 	    pane.add(button, c);
+	    
+	 //Buttons als eigenes Panel? -> Klasse Buttons
+	    Buttons buttonList = new Buttons();
+	    c.gridwidth = 2;
+	    c.weighty = 0.0;
+	    c.ipady = 10;
+	    c.gridx = 0;
+	    c.gridy = 2;
+	    pane.add(buttonList, c);
 
 	    
 	    //this.pack();

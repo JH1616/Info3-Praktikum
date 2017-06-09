@@ -11,7 +11,10 @@
 package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -58,7 +61,33 @@ public class CommandListTable extends JPanel{
 		String[] header = {"No.", "Command", "Configuration"};
 		JTable table = new JTable(rowData, header);
 		
-	    this.add(new JScrollPane(table), BorderLayout.CENTER);
+		/*JPanel button = new JPanel(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.gridy = 0;
+		
+		JButton remove = new JButton("Remove");
+		button.add(remove, c);
+		
+		JButton up = new JButton("Up");
+		c.gridx = 1;
+		button.add(up, c);
+		
+		JButton down = new JButton("Down");
+		c.gridx = 2;
+		button.add(down, c);
+		
+		JButton start = new JButton("Start");
+		c.gridx = 3;
+		button.add(start, c);
+		
+		JButton stop = new JButton("Stop");
+		c.gridx = 4;
+		button.add(stop, c);
+		
+		this.add(button, BorderLayout.SOUTH);*/
+		this.add(new JScrollPane(table), BorderLayout.CENTER);
 	}
 	
 }

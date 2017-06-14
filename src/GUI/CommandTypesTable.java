@@ -41,10 +41,10 @@ class NewMouseListener extends MouseAdapter{
     }
 }
 
-/**
+/*
  * Selection position erkennen
  *
- */
+
 class SharedListSelectionHandler implements ListSelectionListener {
 	private ControlModel cm;
 	
@@ -73,7 +73,7 @@ class SharedListSelectionHandler implements ListSelectionListener {
         }
     }
 }
-
+ */
 /**
  * Tabelle fuer die Comandotyps
  *
@@ -102,7 +102,7 @@ public class CommandTypesTable extends JPanel{
 		//table.addMouseListener(new NewMouseListener());
 		
         listSelectionModel = table.getSelectionModel();
-        listSelectionModel.addListSelectionListener(new SharedListSelectionHandler(this.cm));
+        listSelectionModel.addListSelectionListener(new SharedListSelectionHandler(this.cm, false));
         table.setSelectionModel(listSelectionModel);
 
 	    this.add(new JScrollPane(table), BorderLayout.CENTER);

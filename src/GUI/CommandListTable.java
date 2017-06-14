@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 import rover.CommandList;
 import rover.ControlModel;
@@ -31,6 +32,7 @@ import rover.command.Gear;
  */
 public class CommandListTable extends JPanel{
 	ControlModel cm;
+	ListSelectionModel listSelectionModel;
 	
 	JTable table;
 	CommandList liste;
@@ -68,6 +70,11 @@ public class CommandListTable extends JPanel{
 		button.add(stop, c);
 		
 		this.add(button, BorderLayout.SOUTH);*/
+		
+		listSelectionModel = table.getSelectionModel();
+        listSelectionModel.addListSelectionListener(new SharedListSelectionHandler(this.cm, true));
+        table.setSelectionModel(listSelectionModel);
+		
 		this.add(new JScrollPane(table), BorderLayout.CENTER);
 	}
 	

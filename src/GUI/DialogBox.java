@@ -116,12 +116,13 @@ public class DialogBox extends JOptionPane{
 			pane.add(textField2, c);
 		}
 		
-		if (!inList){
-			cm.getControlProcess().add(command);
-		}
 		
 		int result = showConfirmDialog(null, pane, "Configuration", JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) {
+			
+			if (!inList)
+				cm.getControlProcess().add(command);
+			
 			if (textField1.getText().equals("") & !inList)
 				textField1.setText("0");
 			if (textField2.getText() == "");
@@ -143,9 +144,12 @@ public class DialogBox extends JOptionPane{
 			else if (command.getName().equals("Direction")){
 				((Direction) command).setDegree(Integer.parseInt(textField1.getText()));
 			}
+			System.out.println("geaendert");
 		}
 		
 		System.out.println(command.toString());
+		System.out.println("Liste: ");
+		System.out.println(cm.getControlProcess().toString());
 	}
 	
 	public void show(){

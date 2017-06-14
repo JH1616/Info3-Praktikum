@@ -120,8 +120,6 @@ public class Configuration extends JFrame{
 				else if (command.getName().equals("Repetition")){
 					((Repetition) command).setNrSteps(Integer.parseInt(textField1.getText()));
 					((Repetition) command).setNrRepetitions(Integer.parseInt(textField2.getText()));
-					label1.setText("nrSteps: ");
-					label2.setText("nrRepetitions: ");
 				}
 				
 				else if (command.getName().equals("Direction")){

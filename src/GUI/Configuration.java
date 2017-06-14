@@ -12,7 +12,8 @@ package GUI;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,6 +22,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import rover.command.Command;
+import rover.command.Direction;
+import rover.command.Gear;
+import rover.command.Pause;
+import rover.command.Repetition;
 
 
 /**
@@ -97,6 +102,33 @@ public class Configuration extends JFrame{
 		c.gridx = 0;
 		c.gridy = 1;
 		pane.add(label1, c);
+		
+		
+		button1.addActionListener(new ActionListener(){
+			
+			//Commando in CommandList wird verändert. anzeige muss 
+			public void actionPerformed(ActionEvent e){
+				if (command.getName().equals("Gear")){
+					((Gear) command).setSpeed(Integer.parseInt(textField1.getText()));
+					((Gear) command).setDuration(Double.parseDouble(textField2.getText()));
+				}
+				
+				else if (command.getName().equals("Pause")){
+					((Pause) command).setDuration(Double.parseDouble(textField1.getText()));
+				}
+				
+				else if (command.getName().equals("Repetition")){
+					((Repetition) command).setNrSteps(Integer.parseInt(textField1.getText()));
+					((Repetition) command).setNrRepetitions(Integer.parseInt(textField2.getText()));
+					label1.setText("nrSteps: ");
+					label2.setText("nrRepetitions: ");
+				}
+				
+				else if (command.getName().equals("Direction")){
+					((Direction) command).setDegree(Integer.parseInt(textField1.getText()));
+				}
+			}
+		});
 		
 	}
 

@@ -95,7 +95,6 @@ public class DialogBox extends JOptionPane{
 		else if (command.getName().equals("Direction")){
 			label1.setText("degree: ");
 			textField1.setText("0");
-			
 			if (inList)
 				textField1.setText(Integer.toString(((Direction)command).getDegree()));
 			else
@@ -117,15 +116,15 @@ public class DialogBox extends JOptionPane{
 		}
 		
 		
-		int result = showConfirmDialog(null, pane, "Configuration", JOptionPane.OK_CANCEL_OPTION);
+		int result = showConfirmDialog(null, pane, ("Configuration " + command.getName()), JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) {
 			
 			if (!inList)
 				cm.getControlProcess().add(command);
 			
-			if (textField1.getText().equals("") & !inList)
+			if (textField1.getText().equals(""))
 				textField1.setText("0");
-			if (textField2.getText() == "");
+			if (textField2.getText().equals(""));
 				textField2.setText("0");
 			if (command.getName().equals("Gear")){
 				((Gear) command).setSpeed(Integer.parseInt(textField1.getText()));
@@ -144,49 +143,9 @@ public class DialogBox extends JOptionPane{
 			else if (command.getName().equals("Direction")){
 				((Direction) command).setDegree(Integer.parseInt(textField1.getText()));
 			}
-			System.out.println("geaendert");
 		}
-		
-		System.out.println(command.toString());
-		System.out.println("Liste: ");
-		System.out.println(cm.getControlProcess().toString());
 	}
 	
-	public void show(){
-		int result = showConfirmDialog(null, pane, "Configuration", JOptionPane.OK_CANCEL_OPTION);
-		if (result == JOptionPane.OK_OPTION) {
-			if (textField1.getText().equals(""));
-				textField1.setText("0");
-			if (textField2.getText() == "");
-				textField2.setText("0");
-			if (command.getName().equals("Gear")){
-				((Gear) command).setSpeed(Integer.parseInt(textField1.getText()));
-				((Gear) command).setDuration(Double.parseDouble(textField2.getText()));
-			}
-			
-			else if (command.getName().equals("Pause")){
-				((Pause) command).setDuration(Double.parseDouble(textField1.getText()));
-			}
-			
-			else if (command.getName().equals("Repetition")){
-				((Repetition) command).setNrSteps(Integer.parseInt(textField1.getText()));
-				((Repetition) command).setNrRepetitions(Integer.parseInt(textField2.getText()));
-			}
-			
-			else if (command.getName().equals("Direction")){
-				((Direction) command).setDegree(Integer.parseInt(textField1.getText()));
-			}
-		}
-		
-		System.out.println(command.toString());
-	}
-
-
-	//Testen
-	public static void main(String[] args) {
-
-		//DialogBox a = new DialogBox (new Gear());
-	  }
 }
 
 

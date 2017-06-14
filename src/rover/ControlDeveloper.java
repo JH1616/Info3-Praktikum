@@ -114,15 +114,9 @@ public class ControlDeveloper {
 		testCL.add(new Gear(5,2));
 		
 		RoverView window = new RoverView(testCM);
-	    Configuration window1 = new Configuration(testCL.get(2));
-	    //Configuration window2 = new Configuration(new Pause());
-	    //Configuration window3 = new Configuration(new Direction());
-	    Configuration window4 = new Configuration(new Repetition());
+
 		window.setVisible(true);
-		window1.setVisible(true);
-		//window2.setVisible(true);
-		//window3.setVisible(true);
-		window4.setVisible(true);
+
 		
 	}
 	

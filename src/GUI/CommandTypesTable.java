@@ -24,6 +24,8 @@ import javax.swing.event.ListSelectionListener;
 
 import rover.CommandType;
 import rover.ControlModel;
+import rover.command.Command;
+import rover.command.Gear;
 
 
 /**
@@ -44,7 +46,13 @@ class NewMouseListener extends MouseAdapter{
  *
  */
 class SharedListSelectionHandler implements ListSelectionListener {
-    public void valueChanged(ListSelectionEvent e) { 
+	private ControlModel cm;
+	
+    public SharedListSelectionHandler(ControlModel cm) {
+		this.cm = cm;
+	}
+
+	public void valueChanged(ListSelectionEvent e) { 
         ListSelectionModel lsm = (ListSelectionModel)e.getSource();
 
         int firstIndex = e.getFirstIndex();
@@ -58,6 +66,8 @@ class SharedListSelectionHandler implements ListSelectionListener {
             for (int i = minIndex; i <= maxIndex; i++) {
                 if (lsm.isSelectedIndex(i)) {
                 	System.out.println("CommandTypesTable: " + i);
+                	Command cmd = cm.getCommandTypes()[i].createInstance();
+                	DialogBox a = new DialogBox(cmd, this.cm, false);
                 }
             }
         }
@@ -69,6 +79,7 @@ class SharedListSelectionHandler implements ListSelectionListener {
  *
  */
 public class CommandTypesTable extends JPanel{
+	ControlModel cm;
 	CommandType [] row;
 	
 	JTable table;
@@ -76,7 +87,7 @@ public class CommandTypesTable extends JPanel{
 
 	public CommandTypesTable(ControlModel cm){
 		super(new BorderLayout());
-	
+		this.cm = cm;
 		this.row = cm.getCommandTypes();
 		
 		String[][] rowData = new String [row.length][1];
@@ -91,7 +102,7 @@ public class CommandTypesTable extends JPanel{
 		//table.addMouseListener(new NewMouseListener());
 		
         listSelectionModel = table.getSelectionModel();
-        listSelectionModel.addListSelectionListener(new SharedListSelectionHandler());
+        listSelectionModel.addListSelectionListener(new SharedListSelectionHandler(this.cm));
         table.setSelectionModel(listSelectionModel);
 
 	    this.add(new JScrollPane(table), BorderLayout.CENTER);

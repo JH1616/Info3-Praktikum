@@ -20,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import rover.CommandList;
+import rover.ControlModel;
 import rover.command.Command;
 import rover.command.Direction;
 import rover.command.Gear;
@@ -29,15 +30,16 @@ import rover.command.Gear;
  *
  */
 public class CommandListTable extends JPanel{
+	ControlModel cm;
 	
 	JTable table;
 	CommandList liste;
 	
-	public CommandListTable (CommandList liste){
+	public CommandListTable (ControlModel cm){
 	//bisher BorderLayout - GridBagLayout sinnvoller wegen Buttons
 		super(new BorderLayout());
-		
-		this.liste = liste;
+		this.cm = cm;
+		this.liste = cm.getControlProcess();
 		fill();
 		
 		/*JPanel button = new JPanel(new GridBagLayout());

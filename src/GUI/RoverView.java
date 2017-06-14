@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 
 import rover.CommandList;
 import rover.CommandType;
+import rover.ControlModel;
 
 
 /**
@@ -29,17 +30,19 @@ import rover.CommandType;
  *
  */
 public class RoverView extends JFrame{
+	private ControlModel cm;
 	
 	private CommandTypesTable table;
 	private CommandListTable table2;
-	CommandList liste2;
+
 	
-	public RoverView(CommandType[] liste1, CommandList liste_2){
+	public RoverView(ControlModel cm){
+		this.cm = cm;
+		
 		this.setSize(600,400);
 		this.setTitle("Control Devloper");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.liste2 = liste_2;
 
 		JPanel pane = new JPanel(new GridBagLayout());
 		this.add(pane);
@@ -71,7 +74,7 @@ public class RoverView extends JFrame{
 	    c.gridy = 1;
 	    
 	    
-	    table = new CommandTypesTable(liste1);
+	    table = new CommandTypesTable(cm);
 	    pane.add(table, c);
 
 	    
@@ -83,7 +86,7 @@ public class RoverView extends JFrame{
 	    c.gridx = 1;
 	    c.gridy = 1;
 	    
-	    table2 = new CommandListTable(liste2);
+	    table2 = new CommandListTable(cm);
 	    pane.add(table2, c);
 	    
 	    

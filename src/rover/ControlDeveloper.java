@@ -98,12 +98,12 @@ public class ControlDeveloper {
 			*/
 		
 		//CommandType [] types = {new CommandType("Gear"), new CommandType("Direction"), new CommandType("Pause")};
-	    // später Liste aus ControlModel
+	    // spï¿½ter Liste aus ControlModel
 		ControlModel testCM = ControlModel.getInstance();
 		CommandList testCL = testCM.getControlProcess();
 		testCM.createCommandTypes();
 		
-		//Methode in ControlModel für Zugriff auf Array ergänzt
+		//Methode in ControlModel fï¿½r Zugriff auf Array ergï¿½nzt
 		//oder hat man anders darauf Zugriff?
 		CommandType[] testCT = testCM.getCommandTypes();
 		
@@ -113,7 +113,7 @@ public class ControlDeveloper {
 		testCL.add(new Gear(3,8));
 		testCL.add(new Gear(5,2));
 		
-		RoverView window = new RoverView(testCT, testCL);
+		RoverView window = new RoverView(testCM);
 	    Configuration window1 = new Configuration(testCL.get(2));
 	    //Configuration window2 = new Configuration(new Pause());
 	    //Configuration window3 = new Configuration(new Direction());

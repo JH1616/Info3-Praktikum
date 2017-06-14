@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import rover.ControlModel;
 import rover.command.Command;
 import rover.command.Direction;
 import rover.command.Gear;
@@ -38,7 +39,8 @@ public class DialogBox extends JOptionPane{
 	Command command;
 	
 	
-	public DialogBox(Command command){
+	public DialogBox(Command command, ControlModel cm, boolean inList){
+		//true -> ist in der Liste
 		
 		this.command = command;
 		textField1 = new JTextField(7);
@@ -59,25 +61,45 @@ public class DialogBox extends JOptionPane{
 		if (command.getName().equals("Gear")){
 			label1.setText("Speed: ");
 			label2.setText("Duration: ");
-			textField1.setText("0");
-			textField2.setText("0.0");
+			if (inList){
+				textField1.setText(Integer.toString(((Gear)command).getSpeed()));
+				textField2.setText(Double.toString(((Gear)command).getDuration()));
+			}
+			else{
+				textField1.setText("0");
+				textField2.setText("0.0");
+			}
 		}
 		
 		else if (command.getName().equals("Pause")){
 			label1.setText("Duration: ");
-			textField1.setText("0.0");
+			if (inList)
+				textField1.setText(Double.toString(((Pause)command).getDuration()));
+			else
+				textField1.setText("0.0");
 		}
 		
 		else if (command.getName().equals("Repetition")){
 			label1.setText("nrSteps: ");
 			label2.setText("nrRepetitions: ");
-			textField1.setText("0");
-			textField2.setText("0");
+			if (inList){
+				textField1.setText(Integer.toString(((Repetition)command).getNrSteps()));
+				textField2.setText(Integer.toString(((Repetition)command).getNrRepetitions()));
+			}
+			else{
+				textField1.setText("0");
+				textField2.setText("0");
+			}
 		}
 		
 		else if (command.getName().equals("Direction")){
 			label1.setText("degree: ");
 			textField1.setText("0");
+			
+			if (inList)
+				textField1.setText(Integer.toString(((Direction)command).getDegree()));
+			else
+				textField1.setText("0");
 		}
 		
 		pane.add(label1, c);
@@ -94,13 +116,42 @@ public class DialogBox extends JOptionPane{
 			pane.add(textField2, c);
 		}
 		
-		show();
+		if (!inList){
+			cm.getControlProcess().add(command);
+		}
+		
+		int result = showConfirmDialog(null, pane, "Configuration", JOptionPane.OK_CANCEL_OPTION);
+		if (result == JOptionPane.OK_OPTION) {
+			if (textField1.getText().equals("") & !inList)
+				textField1.setText("0");
+			if (textField2.getText() == "");
+				textField2.setText("0");
+			if (command.getName().equals("Gear")){
+				((Gear) command).setSpeed(Integer.parseInt(textField1.getText()));
+				((Gear) command).setDuration(Double.parseDouble(textField2.getText()));
+			}
+			
+			else if (command.getName().equals("Pause")){
+				((Pause) command).setDuration(Double.parseDouble(textField1.getText()));
+			}
+			
+			else if (command.getName().equals("Repetition")){
+				((Repetition) command).setNrSteps(Integer.parseInt(textField1.getText()));
+				((Repetition) command).setNrRepetitions(Integer.parseInt(textField2.getText()));
+			}
+			
+			else if (command.getName().equals("Direction")){
+				((Direction) command).setDegree(Integer.parseInt(textField1.getText()));
+			}
+		}
+		
+		System.out.println(command.toString());
 	}
 	
 	public void show(){
 		int result = showConfirmDialog(null, pane, "Configuration", JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) {
-			if (textField1.getText() == "");
+			if (textField1.getText().equals(""));
 				textField1.setText("0");
 			if (textField2.getText() == "");
 				textField2.setText("0");
@@ -130,7 +181,7 @@ public class DialogBox extends JOptionPane{
 	//Testen
 	public static void main(String[] args) {
 
-		DialogBox a = new DialogBox (new Gear());
+		//DialogBox a = new DialogBox (new Gear());
 	  }
 }
 

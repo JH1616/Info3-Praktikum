@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
+import GUI.TableUpdater;
 import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.TextFile;
 import rover.command.Command;
@@ -33,6 +34,8 @@ public class ControlModel {
 	private CommandType[] commandTypes;
 	private CommandList controlProcess;
 	private IOType io_obj;
+	private TableUpdater tUpdate;
+	private int selectedRow;
 	
 	/**
 	 * 
@@ -41,9 +44,30 @@ public class ControlModel {
 		
 		commandTypes = new CommandType[4];
 		controlProcess = new CommandList();
+		this.tUpdate = new TableUpdater();
 		
 	}
 	
+	
+	
+	/**
+	 * @return the selectedRow
+	 */
+	public int getSelectedRow() {
+		return selectedRow;
+	}
+
+
+
+	/**
+	 * @param selectedRow the selectedRow to set
+	 */
+	public void setSelectedRow(int selectedRow) {
+		this.selectedRow = selectedRow;
+	}
+
+
+
 	/**
 	 * 
 	 * @return the instance
@@ -52,6 +76,13 @@ public class ControlModel {
 		if (instance==null)
 			instance = new ControlModel();
 		return instance;
+	}
+	
+	/**
+	 * @return the tUpdate
+	 */
+	public TableUpdater gettUpdate() {
+		return tUpdate;
 	}
 	
 	/**

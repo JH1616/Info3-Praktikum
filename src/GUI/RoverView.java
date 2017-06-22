@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import rover.CommandList;
 import rover.CommandType;
@@ -32,8 +33,8 @@ import rover.ControlModel;
 public class RoverView extends JFrame{
 	private ControlModel cm;
 	
-	private CommandTypesTable table;
-	private CommandListTable table2;
+	private CommandTypesTable commandTypes;
+	private CommandListTable commandList;
 
 	
 	public RoverView(ControlModel cm){
@@ -48,23 +49,21 @@ public class RoverView extends JFrame{
 		this.add(pane);
 		GridBagConstraints c = new GridBagConstraints();
 		
-		Menue menu = new Menue();
+		Menue menu = new Menue(cm, this);
 	    
 	    
 	    //natural height, maximum width
 		c.anchor = GridBagConstraints.PAGE_START;
 	    c.gridwidth = 2;
-	    
 	    c.fill = GridBagConstraints.HORIZONTAL;
 	    c.weightx = 1;
 	    c.weighty = 0;
 	    c.ipady = 30;
 	    c.gridx = 0;
 	    c.gridy = 0;
-	    
 	    pane.add(menu, c);
-
-	   // JButton button2 = new JButton("Long-Named Button 4");
+	    
+	    
 	    c.gridwidth = 1;
 	    c.ipadx = 120;//make this component tall
 	    c.ipady = 60000;
@@ -72,34 +71,30 @@ public class RoverView extends JFrame{
 	    c.weighty = 0.5;
 	    c.gridx = 0;
 	    c.gridy = 1;
-	    
-	    
-	    table = new CommandTypesTable(cm);
-	    pane.add(table, c);
+	    commandTypes = new CommandTypesTable(cm);
+	    pane.add(commandTypes, c);
 
 	    
-	    
-	    
-	    JButton button = new JButton("Long-Named Button 5");
 	    c.weightx = 1;
 	    c.weighty = 0.5;
 	    c.gridx = 1;
-	    c.gridy = 1;
+	    c.gridy = 1;  
+	    commandList = new CommandListTable(cm);
+	    pane.add(commandList, c);
 	    
-	    table2 = new CommandListTable(cm);
-	    pane.add(table2, c);
-	    
-	    
-	    
-	    button = new JButton("Long-Named Button 6");
+
 	    c.gridwidth = 2;
 	    c.weightx = 0.0;
 	    c.gridx = 0;
 	    c.gridy = 3;
-	    pane.add(button, c);
+	    //JButton button = new JButton("Long-Named Button 6");
+	    //JTextField button = new JTextField();
+	    Konsole konsole = new Konsole(cm);
+	    pane.add(konsole, c);
 	    
-	 //Buttons als eigenes Panel? -> Klasse Buttons
-	    Buttons buttonList = new Buttons();
+	    
+	    //Buttons als eigenes Panel? -> Klasse Buttons
+	    Buttons buttonList = new Buttons(cm);
 	    c.gridwidth = 2;
 	    c.weighty = 0.0;
 	    c.ipady = 10;
@@ -107,9 +102,6 @@ public class RoverView extends JFrame{
 	    c.gridy = 2;
 	    pane.add(buttonList, c);
 
-	    
-	    //this.pack();
-		
 		
 	}
 

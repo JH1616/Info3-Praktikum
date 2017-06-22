@@ -15,6 +15,7 @@ import java.io.File;
 
 import GUI.Configuration;
 import GUI.RoverView;
+import GUI.TableUpdater;
 import rover.command.Command;
 import rover.command.Direction;
 import rover.command.Gear;
@@ -27,9 +28,14 @@ import rover.command.Repetition;
 public class ControlDeveloper {
 	
 	private Command [] commands;
+
+	
 	String name = "Control-Developer"; //Objektvariable
 	
 	
+
+
+
 	/**
 	 * gibt den Namen der Objektvariablen zurueck
 	 */
@@ -49,7 +55,8 @@ public class ControlDeveloper {
 	 * Konstruktor erzeugt 4stelliges Kommandoarray
 	 */
 	public ControlDeveloper(){
-		commands=new Command[4];
+		this.commands = new Command[4];
+
 	}
 	
 	/**

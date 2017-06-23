@@ -125,7 +125,7 @@ public class DialogBox extends JOptionPane {
 					cm.getControlProcess().add(command);
 			} 
 			catch (NumberFormatException e) {
-				System.out.println("Falsch");
+				showMessageDialog(pane,"Ungültige Eingabe","Inane warning", JOptionPane.WARNING_MESSAGE);
 				DialogBox n = new DialogBox(command, cm, inList);
 			}
 		}

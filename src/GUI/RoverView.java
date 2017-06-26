@@ -11,6 +11,7 @@
 package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -41,6 +42,7 @@ public class RoverView extends JFrame{
 		this.cm = cm;
 		
 		this.setSize(600,400);
+		this.setMinimumSize(new Dimension(500, 300));
 		this.setTitle("Control Devloper");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

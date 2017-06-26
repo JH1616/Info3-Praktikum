@@ -15,7 +15,11 @@ import java.io.IOException;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
+import GUI.Konsole;
 import GUI.TableUpdater;
+import hsrt.mec.controldeveloper.core.com.ComHandler;
+import hsrt.mec.controldeveloper.core.com.IComListener;
+import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.TextFile;
 import rover.command.Command;
@@ -28,7 +32,7 @@ import rover.command.Repetition;
  * 
  * Zentralverwaltung der Commands
  */
-public class ControlModel {
+public class ControlModel implements IComListener{
 	
 	private static ControlModel instance=null;
 	private CommandType[] commandTypes;
@@ -36,7 +40,20 @@ public class ControlModel {
 	private IOType io_obj;
 	private TableUpdater tUpdate;
 	private int selectedRow;
+	private Konsole konsole;
+	private ComHandler comHandler;
 	
+	
+	
+	/**
+	 * @param konsole the konsole to set
+	 */
+	public void setKonsole(Konsole konsole) {
+		this.konsole = konsole;
+	}
+
+
+
 	/**
 	 * 
 	 */
@@ -46,10 +63,23 @@ public class ControlModel {
 		controlProcess = new CommandList();
 		this.tUpdate = new TableUpdater();
 		
+		this.comHandler = ComHandler.getInstance();
+		this.comHandler.register(this);
+
 	}
 	
 	
 	
+	
+	/**
+	 * @return the comHandler
+	 */
+	public ComHandler getComHandler() {
+		return comHandler;
+	}
+
+
+
 	/**
 	 * @return the selectedRow
 	 */
@@ -96,6 +126,17 @@ public class ControlModel {
 	}
 	
 	/**
+	 * neue verketteten Liste
+	 * @param f
+	 * @return true wenn erfolgreich, 
+	 */
+	public boolean blanew(){
+	    for(;controlProcess.remove(0););
+	    
+		return true;
+	}
+	
+	/**
 	 * auslesen der Commads aus dem File f und speichern in der verketteten Liste
 	 * @param f
 	 * @return true wenn erfolgreich, 
@@ -109,24 +150,27 @@ public class ControlModel {
 	    this.io_obj.close();
 	
 	    String[] zeile1;
+	    blanew();
 	    
-		for(String zeile : data){
-			zeile1 = zeile.split(" ");
-			String name = zeile1[0];
+		for(String zeile0 : data){
+			String [] zeile = zeile0.split(" ");
+			for(int j = 1; j < zeile.length; j+=1){
+				zeile[j] = (zeile[j].split("="))[1];
+				zeile[j] = zeile[j].replaceAll(",", "");
+				zeile[j] = zeile[j].replaceAll("]", "");
+			}
 			
-			 
-			
-			if(name.equals("Gear")){
-				controlProcess.add(new Gear(Integer.parseInt(zeile1[1]), Double.parseDouble(zeile1[2])));
+			if(zeile[0].equals("Gear")){
+				controlProcess.add(new Gear(Integer.parseInt(zeile[1]), Double.parseDouble(zeile[2])));
 			}
-			else if(name.equals("Repetition")) {
-				controlProcess.add(new Repetition(Integer.parseInt(zeile1[1]), Integer.parseInt(zeile1[2])));
+			else if(zeile[0].equals("Repetition")) {
+				controlProcess.add(new Repetition(Integer.parseInt(zeile[1]), Integer.parseInt(zeile[2])));
 			}
-			else if(name.equals("Pause")){
-				controlProcess.add(new Pause(Double.parseDouble(zeile1[1])));
+			else if(zeile[0].equals("Pause")){
+				controlProcess.add(new Pause(Double.parseDouble(zeile[1])));
 			}
-			else if(name.equals("Direction")){
-				controlProcess.add(new Direction(Integer.parseInt(zeile1[1])));
+			else if(zeile[0].equals("Direction")){
+				controlProcess.add(new Direction(Integer.parseInt(zeile[1])));
 			}
 		}
 
@@ -174,6 +218,14 @@ public class ControlModel {
 	 */
 	public CommandType[] getCommandTypes() {
 		return commandTypes;
+	}
+
+
+
+	@Override
+	public void commandPerformed(ICommand arg0) {
+		this.konsole.addText(arg0.toString());
+		
 	}
 	
 	

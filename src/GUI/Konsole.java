@@ -23,14 +23,17 @@ public class Konsole extends JPanel{
 	public Konsole (ControlModel cm){
 		super(new BorderLayout());
 		this.cm = cm;
+		this.cm.setKonsole(this);
 		
 		JTextArea text = new JTextArea();
 		text.setEditable(false);
-		text.setText("test");
 		
 		this.add(new JScrollPane(text), BorderLayout.CENTER);
 		}
 
+	public void addText(String ausgabe){
+		text.append(ausgabe);
+	}
 
 		
 	}

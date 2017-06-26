@@ -11,8 +11,10 @@
 package GUI;
 
 import java.awt.Desktop;
+import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -43,9 +45,23 @@ public class Menue extends JMenuBar{
 		JMenu file = new JMenu("File");
 		this.add(file);
 		
+		JMenu port = new JMenu("Port");
+		this.add(port);
+		
 		JMenu info = new JMenu("Info");
+		//this.add(info, GridBagConstraints.EAST);
 		this.add(info);
 		
+		JMenuItem blanew = new JMenuItem("new");
+		file.add(blanew);
+		blanew.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				cm.blanew();
+			    cm.gettUpdate().update();
+			    }
+				
+			}
+		);
 		
 		JMenuItem save = new JMenuItem("save");
 		file.add(save);
@@ -57,8 +73,12 @@ public class Menue extends JMenuBar{
 			        chooser.setFileFilter(filter);
 			    int returnVal = chooser.showSaveDialog(frame);
 			    if(returnVal == JFileChooser.APPROVE_OPTION) {
-			       System.out.println("You chose to Save this file: " +
-			            chooser.getSelectedFile().getName());
+			       
+			       String path = chooser.getCurrentDirectory().getAbsolutePath()+
+			    		   "/"+chooser.getSelectedFile().getName() + ".txt";
+			       System.out.println("You chose to Save this file: " + path);
+			       File f = new File(path);
+			       cm.save(f);
 			    }
 				
 			}
@@ -74,8 +94,12 @@ public class Menue extends JMenuBar{
 			        chooser.setFileFilter(filter);
 			    int returnVal = chooser.showOpenDialog(frame);
 			    if(returnVal == JFileChooser.APPROVE_OPTION) {
-			       System.out.println("You chose to open this file: " +
-			            chooser.getSelectedFile().getName());
+			    	String path = chooser.getCurrentDirectory().getAbsolutePath()+
+				    		   "/"+chooser.getSelectedFile().getName();
+				       System.out.println("You chose to load this file: " + path);
+				       File f = new File(path);
+				       cm.load(f);
+				       cm.gettUpdate().update();
 			    }
 			    }
 		});		

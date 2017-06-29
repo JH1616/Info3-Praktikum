@@ -57,10 +57,8 @@ public class ControlModel implements IComListener{
 		this.konsole = konsole;
 	}
 
-
-
 	/**
-	 * 
+	 * Konstruktor
 	 */
 	private ControlModel(){	
 		commandTypes = new CommandType[4];
@@ -72,7 +70,9 @@ public class ControlModel implements IComListener{
 		this.comPortHandler = new ComPortHandler();
 	}
 	
-	
+	/**
+	 * comHandler wird gestartet und Liste mit Commands wird übergeben
+	 */
 	public void start(){
 		Vector<ICommand> commands = new Vector<ICommand>();
 		
@@ -83,11 +83,12 @@ public class ControlModel implements IComListener{
 		comHandler.start(commands, serial);
 	}
 	
+	/**
+	 * comHandler anhalten
+	 */
 	public void stop(){
 		comHandler.stop();
 	}
-	
-	
 	
 	/**
 	 * @return the serial
@@ -95,8 +96,6 @@ public class ControlModel implements IComListener{
 	public IOType getSerial() {
 		return serial;
 	}
-
-
 
 	/**
 	 * @param serial the serial to set
@@ -106,16 +105,12 @@ public class ControlModel implements IComListener{
 		
 	}
 
-
-
 	/**
 	 * @return the comPortHandler
 	 */
 	public ComPortHandler getComPortHandler() {
 		return comPortHandler;
 	}
-
-
 
 	/**
 	 * @return the comHandler
@@ -124,16 +119,12 @@ public class ControlModel implements IComListener{
 		return comHandler;
 	}
 
-
-
 	/**
 	 * @return the selectedRow
 	 */
 	public int getSelectedRow() {
 		return selectedRow;
 	}
-
-
 
 	/**
 	 * @param selectedRow the selectedRow to set
@@ -142,10 +133,8 @@ public class ControlModel implements IComListener{
 		this.selectedRow = selectedRow;
 	}
 
-
-
 	/**
-	 * 
+	 * Zugriff auf ControlModel
 	 * @return the instance
 	 */
 	public static ControlModel getInstance(){
@@ -267,7 +256,9 @@ public class ControlModel implements IComListener{
 	}
 
 
-
+	/**
+	 * toString methode des Commands auf Konsole ausgeben
+	 */
 	@Override
 	public void commandPerformed(ICommand arg0) {
 		this.konsole.addText(arg0.toString());

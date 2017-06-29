@@ -32,12 +32,13 @@ import rover.command.Repetition;
 public class DialogBox extends JOptionPane {
 
 	/**
-	 * 
+	 * Erstellen einer Dialogbox und Konfiguration der Commands nach Eingabe
 	 * @param command
-	 * @param cm
 	 * @param inList
 	 */
-	public DialogBox(Command command, ControlModel cm, boolean inList) {
+	public DialogBox(Command command, boolean inList) {
+		
+		ControlModel cm = ControlModel.getInstance();
 
 		JTextField textField1 = new JTextField(7);
 		JTextField textField2 = new JTextField(7);
@@ -126,7 +127,7 @@ public class DialogBox extends JOptionPane {
 			} 
 			catch (NumberFormatException e) {
 				showMessageDialog(pane,"Ungültige Eingabe","Inane warning", JOptionPane.WARNING_MESSAGE);
-				DialogBox n = new DialogBox(command, cm, inList);
+				DialogBox n = new DialogBox(command, inList);
 			}
 		}
 

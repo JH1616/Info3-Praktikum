@@ -11,7 +11,6 @@
 package GUI;
 
 import java.awt.Desktop;
-import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -33,10 +32,9 @@ import hsrt.mec.controldeveloper.core.com.ComPort;
 import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.SerialUSB;
 import rover.ControlModel;
-import rover.command.Command;
 
 /**
- * 
+ * MenueBar
  *
  */
 public class Menue extends JMenuBar{
@@ -44,9 +42,13 @@ public class Menue extends JMenuBar{
 	private JFrame frame;
 	private JMenu portmenue;
 	
-	public Menue(ControlModel cm, JFrame frame){
+	/**
+	 * MenueBar mit Auswahlmoeglichkeiten und ActionListenern wird erstellt
+	 * @param frame
+	 */
+	public Menue(JFrame frame){
 		super();
-		this.cm = cm;
+		this.cm = ControlModel.getInstance();
 		this.frame = frame;
 		
 		JMenu file = new JMenu("File");

@@ -20,9 +20,9 @@ public class Konsole extends JPanel{
 	private JTextArea text;
 
 	
-	public Konsole (ControlModel cm){
+	public Konsole (){
 		super(new BorderLayout());
-		this.cm = cm;
+		this.cm = ControlModel.getInstance();
 		this.cm.setKonsole(this);
 		
 		JTextArea text = new JTextArea();

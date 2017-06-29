@@ -1,20 +1,24 @@
 package GUI;
 
-import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
 import rover.CommandList;
 import rover.ControlModel;
 
+
+/**
+ * Verwaltung der CommandList Tabelle
+ *
+ */
 public class CommandListTableModel extends AbstractTableModel implements tableUpdate{
 	private ControlModel cm;
 	private CommandList liste; 
 	
 	private String[] culumnHeader = {"No.", "Command", "Configuration"};
 	
-	public CommandListTableModel(ControlModel cm){
+	public CommandListTableModel(){
 		super();
-		this.cm = cm;
+		this.cm = ControlModel.getInstance();
 		this.liste = cm.getControlProcess();
 		
 	}

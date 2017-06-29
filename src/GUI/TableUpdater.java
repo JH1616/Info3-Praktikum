@@ -4,16 +4,28 @@ import java.util.Vector;
 
 import javax.swing.JTable;
 
+/**
+ * Klasse zum Update der Tabellen
+ *
+ */
 public class TableUpdater {
 	private Vector<tableUpdate> v = new Vector<tableUpdate>();
 	private JTable table;
-	
-	public void add(tableUpdate table){
+
+	/**
+	 * Tabelle (muss interface tableUpdate implementieren) hinzufuegen
+	 * 
+	 * @param table
+	 */
+	public void add(tableUpdate table) {
 		v.addElement(table);
 	}
-	
-	public void update(){
-		for(tableUpdate i : this.v){
+
+	/**
+	 * Methode update wird für alle registrierten Tabellen aufgerufen
+	 */
+	public void update() {
+		for (tableUpdate i : this.v) {
 			i.update();
 		}
 	}
@@ -26,7 +38,8 @@ public class TableUpdater {
 	}
 
 	/**
-	 * @param table the table to set
+	 * @param table
+	 *            the table to set
 	 */
 	public void setTable(JTable table) {
 		this.table = table;

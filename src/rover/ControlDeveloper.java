@@ -31,10 +31,6 @@ public class ControlDeveloper {
 
 	
 	String name = "Control-Developer"; //Objektvariable
-	
-	
-
-
 
 	/**
 	 * gibt den Namen der Objektvariablen zurueck
@@ -104,14 +100,10 @@ public class ControlDeveloper {
 			System.out.println(testCL.get(i).toString());
 			*/
 		
-		//CommandType [] types = {new CommandType("Gear"), new CommandType("Direction"), new CommandType("Pause")};
-	    // sp�ter Liste aus ControlModel
 		ControlModel testCM = ControlModel.getInstance();
 		CommandList testCL = testCM.getControlProcess();
 		testCM.createCommandTypes();
 		
-		//Methode in ControlModel f�r Zugriff auf Array erg�nzt
-		//oder hat man anders darauf Zugriff?
 		CommandType[] testCT = testCM.getCommandTypes();
 		
 		testCL.add(new Gear());
@@ -120,7 +112,7 @@ public class ControlDeveloper {
 		testCL.add(new Gear(3,8));
 		testCL.add(new Gear(5,2));
 		
-		RoverView window = new RoverView(testCM);
+		RoverView window = new RoverView();
 
 		window.setVisible(true);
 

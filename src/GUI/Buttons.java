@@ -24,7 +24,7 @@ import rover.CommandList;
 import rover.ControlModel;
 
 /**
- * 
+ * Buttons
  *
  */
 public class Buttons extends JPanel{
@@ -32,11 +32,13 @@ public class Buttons extends JPanel{
 	private CommandList liste;
 	private JTable table;
 
-	//nur mal bisschen was hingeschrieben
-	//mir ist nur noch nichts besseres eingefallen
-	public Buttons(ControlModel cm){
+
+	/**
+	 * Erstellen der Buttons mit ActionListener
+	 */
+	public Buttons(){
 		super(new GridBagLayout());
-		this.cm = cm;
+		this.cm = ControlModel.getInstance();
 		this.liste = cm.getControlProcess();
 		this.table = this.cm.gettUpdate().getTable();
 		

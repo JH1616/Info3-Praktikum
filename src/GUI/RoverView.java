@@ -10,36 +10,30 @@
 */
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import rover.CommandList;
-import rover.CommandType;
-import rover.ControlModel;
 
 
 /**
- * 
+ * Zentralverwaltung der Grafik
  *
  */
 public class RoverView extends JFrame{
-	private ControlModel cm;
 	
 	private CommandTypesTable commandTypes;
 	private CommandListTable commandList;
 
 	
-	public RoverView(ControlModel cm){
-		this.cm = cm;
+	/**
+	 * Fenster mit Paneln wird erstellt und dimensioniert
+	 * @param cm
+	 */
+	public RoverView(){
 		
 		this.setSize(600,400);
 		this.setMinimumSize(new Dimension(500, 300));
@@ -51,7 +45,7 @@ public class RoverView extends JFrame{
 		this.add(pane);
 		GridBagConstraints c = new GridBagConstraints();
 		
-		Menue menu = new Menue(cm, this);
+		Menue menu = new Menue(this);
 	    
 	    
 	    //natural height, maximum width
@@ -73,7 +67,7 @@ public class RoverView extends JFrame{
 	    c.weighty = 0.5;
 	    c.gridx = 0;
 	    c.gridy = 1;
-	    commandTypes = new CommandTypesTable(cm);
+	    commandTypes = new CommandTypesTable();
 	    pane.add(commandTypes, c);
 
 	    
@@ -81,7 +75,7 @@ public class RoverView extends JFrame{
 	    c.weighty = 0.5;
 	    c.gridx = 1;
 	    c.gridy = 1;  
-	    commandList = new CommandListTable(cm);
+	    commandList = new CommandListTable();
 	    pane.add(commandList, c);
 	    
 
@@ -89,12 +83,12 @@ public class RoverView extends JFrame{
 	    c.weightx = 0.0;
 	    c.gridx = 0;
 	    c.gridy = 3;
-	    Konsole konsole = new Konsole(cm);
+	    Konsole konsole = new Konsole();
 	    pane.add(konsole, c);
 	    
 	    
 	    //Buttons als eigenes Panel? -> Klasse Buttons
-	    Buttons buttonList = new Buttons(cm);
+	    Buttons buttonList = new Buttons();
 	    c.gridwidth = 2;
 	    c.weighty = 0.0;
 	    c.ipady = 10;

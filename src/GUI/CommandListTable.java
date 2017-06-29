@@ -8,13 +8,11 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 
-import rover.CommandList;
 import rover.ControlModel;
 
 /**
- *
+ *	Tabelle mit allen Commands in der Liste
  */
 public class CommandListTable extends JPanel{
 	private ControlModel cm;
@@ -23,19 +21,21 @@ public class CommandListTable extends JPanel{
 	private CommandListTableModel model;
 	private TableUpdater tUpdate;
 
-	
-	public CommandListTable (ControlModel cm){
+	/**
+	 * 
+	 */
+	public CommandListTable (){
 		super(new BorderLayout());
-		this.cm = cm;
+		this.cm = ControlModel.getInstance();
 		this.tUpdate = cm.gettUpdate();
 		
-		this.model = new CommandListTableModel(cm);
+		this.model = new CommandListTableModel();
 		this.table = new JTable(this.model);
 		
 		this.tUpdate.add(model);
 		this.tUpdate.setTable(this.table);
 
-		this.table.addMouseListener(new SharedListSelectionHandler(this.tUpdate, this.table, this.cm, true));
+		this.table.addMouseListener(new SharedListSelectionHandler(this.tUpdate, this.table, true));
 		
 		this.add(new JScrollPane(table), BorderLayout.CENTER);
 		}

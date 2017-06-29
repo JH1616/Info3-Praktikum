@@ -18,9 +18,12 @@ import java.util.concurrent.TimeUnit;
 import GUI.Konsole;
 import GUI.TableUpdater;
 import hsrt.mec.controldeveloper.core.com.ComHandler;
+import hsrt.mec.controldeveloper.core.com.ComPort;
+import hsrt.mec.controldeveloper.core.com.ComPortHandler;
 import hsrt.mec.controldeveloper.core.com.IComListener;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.IOType;
+import hsrt.mec.controldeveloper.io.SerialUSB;
 import hsrt.mec.controldeveloper.io.TextFile;
 import rover.command.Command;
 import rover.command.Direction;
@@ -42,6 +45,8 @@ public class ControlModel implements IComListener{
 	private int selectedRow;
 	private Konsole konsole;
 	private ComHandler comHandler;
+	private ComPortHandler comPortHandler;
+	private IOType serial;
 	
 	
 	
@@ -57,20 +62,61 @@ public class ControlModel implements IComListener{
 	/**
 	 * 
 	 */
-	private ControlModel(){
-		
+	private ControlModel(){	
 		commandTypes = new CommandType[4];
 		controlProcess = new CommandList();
 		this.tUpdate = new TableUpdater();
 		
 		this.comHandler = ComHandler.getInstance();
 		this.comHandler.register(this);
+		this.comPortHandler = new ComPortHandler();
+	}
+	
+	
+	public void start(){
+		Vector<ICommand> commands = new Vector<ICommand>();
+		
+		for(int i = 0;controlProcess.get(i)==null;i++){
+			commands.addElement(controlProcess.get(i));
+		}
 
+		comHandler.start(commands, serial);
+	}
+	
+	public void stop(){
+		comHandler.stop();
 	}
 	
 	
 	
-	
+	/**
+	 * @return the serial
+	 */
+	public IOType getSerial() {
+		return serial;
+	}
+
+
+
+	/**
+	 * @param serial the serial to set
+	 */
+	public void setSerial(IOType serial) {
+		this.serial = serial;
+		
+	}
+
+
+
+	/**
+	 * @return the comPortHandler
+	 */
+	public ComPortHandler getComPortHandler() {
+		return comPortHandler;
+	}
+
+
+
 	/**
 	 * @return the comHandler
 	 */

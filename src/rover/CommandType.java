@@ -10,6 +10,7 @@
 */
 package rover;
 
+import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import rover.command.Command;
 import rover.command.Direction;
 import rover.command.Gear;
@@ -20,7 +21,7 @@ import rover.command.Repetition;
  * 
  *
  */
-public class CommandType {
+public class CommandType implements ICommand{
 	
 	private String name;
 	

@@ -102,7 +102,7 @@ public class Buttons extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//kommt noch
+				cm.start();
 			}
 		});
 		
@@ -114,7 +114,7 @@ public class Buttons extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//kommt noch
+				cm.stop();
 			}
 		});
 	}

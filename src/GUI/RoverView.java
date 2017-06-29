@@ -89,8 +89,6 @@ public class RoverView extends JFrame{
 	    c.weightx = 0.0;
 	    c.gridx = 0;
 	    c.gridy = 3;
-	    //JButton button = new JButton("Long-Named Button 6");
-	    //JTextField button = new JTextField();
 	    Konsole konsole = new Konsole(cm);
 	    pane.add(konsole, c);
 	    

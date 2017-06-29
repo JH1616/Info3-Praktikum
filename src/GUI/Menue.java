@@ -14,6 +14,8 @@ import java.awt.Desktop;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -27,7 +29,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import hsrt.mec.controldeveloper.core.com.ComPort;
+import hsrt.mec.controldeveloper.io.IOType;
+import hsrt.mec.controldeveloper.io.SerialUSB;
 import rover.ControlModel;
+import rover.command.Command;
 
 /**
  * 
@@ -36,6 +42,7 @@ import rover.ControlModel;
 public class Menue extends JMenuBar{
 	private ControlModel cm;
 	private JFrame frame;
+	private JMenu portmenue;
 	
 	public Menue(ControlModel cm, JFrame frame){
 		super();
@@ -45,8 +52,59 @@ public class Menue extends JMenuBar{
 		JMenu file = new JMenu("File");
 		this.add(file);
 		
-		JMenu port = new JMenu("Port");
-		this.add(port);
+		portmenue = new JMenu("Port");
+		this.add(portmenue);
+		portmenue.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {				
+				// TODO Auto-generated method stub
+				ComPort[] ports = cm.getComPortHandler().getPorts();
+				portmenue.removeAll();
+				JMenuItem toFile = new JMenuItem("toFile");
+				portmenue.add(toFile);
+				toFile.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e) {
+						File f = new File("test.txt");
+						cm.setSerial((IOType) f);
+					}});
+				portmenue.addSeparator();
+				for(ComPort port : ports){
+					JMenuItem item = new JMenuItem(port.getName());
+					portmenue.add(item);
+					item.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent e) {
+							cm.setSerial(new SerialUSB(port));
+						}
+					});
+				}
+			    System.out.println("hi");
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+				
+			}
+		);
 		
 		JMenu info = new JMenu("Info");
 		//this.add(info, GridBagConstraints.EAST);

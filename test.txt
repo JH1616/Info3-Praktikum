@@ -1,3 +1,5 @@
-Repetition [nrSteps=0, nrRepetitions=0]
-Repetition [nrSteps=0, nrRepetitions=0]
-Gear [speed=0, duration=0.0]
+60;0;0
+0;0;0
+0;0;4000
+61;0;8000
+62;0;2000

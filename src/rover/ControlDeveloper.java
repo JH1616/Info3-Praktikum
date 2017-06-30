@@ -113,6 +113,8 @@ public class ControlDeveloper {
 		testCL.add(new Gear(5,2));
 		
 		RoverView window = new RoverView();
+		
+
 
 		window.setVisible(true);
 

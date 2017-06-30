@@ -71,7 +71,7 @@ public class ControlModel implements IComListener{
 	}
 	
 	/**
-	 * comHandler wird gestartet und Liste mit Commands wird übergeben
+	 * comHandler wird gestartet und Liste mit Commands wird ï¿½bergeben
 	 */
 	public void start(){
 		Vector<ICommand> commands = new Vector<ICommand>();
@@ -231,14 +231,6 @@ public class ControlModel implements IComListener{
 		return true;
 	}
 	
-	/**
-	 * 
-	 * @param c
-	 */
-	public void commandPerformed(Command c){
-		System.out.println(c.toString());
-		//damit die Methode irgendwas macht
-	}
 	
 	/**
 	 * Zugriff auf verkettete Liste
@@ -262,7 +254,10 @@ public class ControlModel implements IComListener{
 	@Override
 	public void commandPerformed(ICommand arg0) {
 		this.konsole.addText(arg0.toString());
-		
+	}
+	
+	public void printKonsole(String txt){
+		this.konsole.addText(txt);
 	}
 	
 	

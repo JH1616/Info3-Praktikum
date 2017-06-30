@@ -104,6 +104,7 @@ public class Buttons extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				cm.printKonsole("\nIs running...");
 				cm.start();
 			}
 		});
@@ -117,6 +118,7 @@ public class Buttons extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cm.stop();
+				cm.printKonsole("Is stopped.");
 			}
 		});
 	}

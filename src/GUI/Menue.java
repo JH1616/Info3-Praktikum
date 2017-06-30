@@ -33,6 +33,7 @@ import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.SerialUSB;
 import hsrt.mec.controldeveloper.io.TextFile;
 import rover.ControlModel;
+import rover.command.Direction;
 
 /**
  * MenueBar
@@ -94,6 +95,7 @@ public class Menue extends JMenuBar{
 					item.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent e) {
 							cm.setSerial(new SerialUSB(port));
+							cm.printKonsole("Selected port: '"+port.getName()+"'");
 						}
 					});
 				}
@@ -140,6 +142,7 @@ public class Menue extends JMenuBar{
 			       System.out.println("You chose to Save this file: " + path);
 			       File f = new File(path);
 			       cm.save(f);
+			       cm.printKonsole("Sucessfully saved: '"+path+"'");
 			    }
 				
 			}
@@ -161,6 +164,7 @@ public class Menue extends JMenuBar{
 				       File f = new File(path);
 				       cm.load(f);
 				       cm.gettUpdate().update();
+				       cm.printKonsole("Sucessfully loaded: '"+path+"'");
 			    }
 			    }
 		});		
@@ -185,6 +189,14 @@ public class Menue extends JMenuBar{
 		            }
 		        }
 				
+			}
+		});
+		
+		JMenuItem test = new JMenuItem("Konsole Test");
+		info.add(test);
+		test.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				cm.commandPerformed(new Direction());	
 			}
 		});
 		

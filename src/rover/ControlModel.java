@@ -76,7 +76,7 @@ public class ControlModel implements IComListener{
 	public void start(){
 		Vector<ICommand> commands = new Vector<ICommand>();
 		
-		for(int i = 0;controlProcess.get(i)==null;i++){
+		for(int i = 0;controlProcess.get(i)!=null;i++){
 			commands.addElement(controlProcess.get(i));
 		}
 

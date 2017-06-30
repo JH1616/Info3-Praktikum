@@ -31,6 +31,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import hsrt.mec.controldeveloper.core.com.ComPort;
 import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.SerialUSB;
+import hsrt.mec.controldeveloper.io.TextFile;
 import rover.ControlModel;
 
 /**
@@ -84,7 +85,7 @@ public class Menue extends JMenuBar{
 				toFile.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
 						File f = new File("test.txt");
-						cm.setSerial((IOType) f);
+						cm.setSerial(new TextFile (f, false));
 					}});
 				portmenue.addSeparator();
 				for(ComPort port : ports){
